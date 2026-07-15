@@ -1,0 +1,145 @@
+[
+  {
+    "query": "ESP-NOW nedir?",
+    "expected_answerable": true,
+    "sources": [
+      "ESP-NOW Protokolü SSS",
+      "ESP-NOW Eşleştirme"
+    ],
+    "top_score": 0.765,
+    "answer": "ESP-NOW, Wi-Fi router gerektirmeden iki veya daha fazla ESP32 cihazının doğrudan birbiriyle haberleşmesini sağlayan düşük gecikmeli bir Espressif protokolüdür. Bu protokol, ESP32 cihazları arasında mesajlar gönderimi ve kabul edilmesi kolay hale getirdi. Ayrıca, bir cihaz aynı anda hem istasyon (station) hem de soft-AP modunda çalışabilir.",
+    "elapsed_sec": 4.84,
+    "said_unknown": false,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "Servo motoru nasıl kontrol ederim?",
+    "expected_answerable": true,
+    "sources": [
+      "PWM ve Servo Kontrolü",
+      "Güç Yönetimi SSS"
+    ],
+    "top_score": 0.511,
+    "answer": "Servo motorları kontrol etmek için ESP32'un PWM (Pulse Width Modulation) özelliğini kullanırız. PWM'nin temel amacı, motorun hızını belirleyerek belirli bir hızda hareket etmesini sağlar. PWM'yi gerçekleştirmek için esp32'in LEDC (LED Control) çevre birimidir.\n\nBu çevre birimi, PWM'nin frekansını, çözünürlüğünü ve duty cycle'ini ayarlamanı sağlar. PWM'nin frekansı servo motorunuzla ne kadar hızlı çalışacağını belirtirken, çözünürlüğü ise motorunuzla ne kadar az veya çok az hareket ettiğina bağlıdır.\n\nDuty cycle ise PWM'nin en önemli özelliği olup, motorunuzla ne kadar az veya çok az hareket ettiği belirtir. Duty cycle 'i 0 ise motor az hareket edecektir, duty cycle 'i 1 ise motor çok hareket edecektir.\n\nServo motorları genellikle 50 Hz frekanslı ve 1-2 ms darbe genişliğinde kontrol edilir. Bu frekv",
+    "elapsed_sec": 7.9,
+    "said_unknown": false,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "Brownout hatası nasıl çözülür?",
+    "expected_answerable": true,
+    "sources": [
+      "Sık Karşılaşılan Hatalar",
+      "Derin Uyku (Deep Sleep) Modu"
+    ],
+    "top_score": 0.49,
+    "answer": "Brownout hatasını çözmek için aşağıdaki adımları izleyin:\n\n1. Yeterli güç kaynağına bağlayın.\n2. USB hub yerine doğrudan bilgisayar portu veya harici güç kaynağı kullanın.\n3. ESP32'u deep sleep moduna alın.\n4. RTC'nin kullanılmasını engelleyin.\n\nBu adımlara göre brownout hatası çözülmeye çalışsak, ESP32'in enerji vermesi daha kolay hale gelmesini sağlar. \n\n(Çok teşekkür ederim, bu sorunun çözümü için esp_sleep_enable_timer_wakeup() fonksiyonunu kullandığımızı unutmayın.)",
+    "elapsed_sec": 5.72,
+    "said_unknown": false,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "ESP32'yi hangi voltajlarla besleyebilirim?",
+    "expected_answerable": true,
+    "sources": [
+      "Güç Yönetimi SSS",
+      "Kurulum Kılavuzu - Bölüm 1"
+    ],
+    "top_score": 0.757,
+    "answer": "ESP32, USB üzerinden 5V ile beslenebileceği gibi VIN pininden 5-12V veya 3V3 pininden doğrudan 3.3V ile de beslenebilir. Bu nedenle, ESP32'yi 5-12V veya 3V3 pininden 3.3V ile beslemek için ayrı bir güç kaynağı kullanılması önerilir.",
+    "elapsed_sec": 4.83,
+    "said_unknown": false,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "Deep sleep modu ne işe yarar?",
+    "expected_answerable": true,
+    "sources": [
+      "Derin Uyku (Deep Sleep) Modu",
+      "ESP-NOW Protokolü SSS"
+    ],
+    "top_score": 0.585,
+    "answer": "(Çevrimiçi)\nDeep sleep modu ESP32 cihazı için bir enerji kaybı azalayan durumdır. Bu modda, RTC hariç birçok bileşen kapanır ve akım tüketimi mikroampere seviyesinde düşer. Ayrıca, esp_sleep_enable_timer_wakeup() fonksiyonu kullanılarak belirli bir süre sonra otomatik olarak uyanabilirlik ayarı yapılır.\n(Çevrimiçi)",
+    "elapsed_sec": 4.74,
+    "said_unknown": false,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "ESP-NOW ile iki cihazı nasıl eşleştiririm?",
+    "expected_answerable": true,
+    "sources": [
+      "ESP-NOW Protokolü SSS",
+      "ESP-NOW Eşleştirme"
+    ],
+    "top_score": 0.685,
+    "answer": "ESP-NOW ile iki cihazı eşleştirmek için aşağıdaki adımları takip edebilirsiniz:\n\n1. Alıcı cihazı MAC adresini bilmeniz gerekiyor.\n2. `esp_now_add_peer()` fonksiyonunu kullanarak eşleştirme listesine cihazınızı eklersiniz.\n\nMAC adresi öğrenmek için `WiFi.macAddress()` fonksiyonunu kullanabilirsiniz.\n\nESP-NOW şifrelenmez bir protokoldur, ancak peer bazında ayarlamanız gerekmektedir.\n\nBu adımları tamamladıktan sonra ESP-NOW ile iki cihaza ulaşabilirsiniz. \n\n(Çerçeve: X)",
+    "elapsed_sec": 6.09,
+    "said_unknown": false,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "ESP32 geliştirme kartının fiyatı nedir?",
+    "expected_answerable": false,
+    "sources": [
+      "Kurulum Kılavuzu - Bölüm 1",
+      "Kurulum Kılavuzu - Bölüm 2"
+    ],
+    "top_score": 0.611,
+    "answer": "Bilinmeyen.",
+    "elapsed_sec": 3.0,
+    "said_unknown": true,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "Bluetooth Low Energy (BLE) nasıl kullanılır?",
+    "expected_answerable": false,
+    "sources": [
+      "Derin Uyku (Deep Sleep) Modu",
+      "Güç Yönetimi SSS"
+    ],
+    "top_score": 0.441,
+    "answer": "Bu konuda bilgi tabanımda yeterli bilgi bulamadım, bu yüzden bir cevap veremiyorum.",
+    "elapsed_sec": 0.51,
+    "said_unknown": true,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "Python ile bir web sitesi nasıl yaparım?",
+    "expected_answerable": false,
+    "sources": [
+      "ESP-NOW Eşleştirme",
+      "Kurulum Kılavuzu - Bölüm 1"
+    ],
+    "top_score": 0.307,
+    "answer": "Bu konuda bilgi tabanımda yeterli bilgi bulamadım, bu yüzden bir cevap veremiyorum.",
+    "elapsed_sec": 0.44,
+    "said_unknown": true,
+    "auto_flag_ok": true
+  },
+  {
+    "query": "ESP32'de kamera modülü nasıl bağlanır?",
+    "expected_answerable": false,
+    "sources": [
+      "Kurulum Kılavuzu - Bölüm 1",
+      "Kurulum Kılavuzu - Bölüm 2"
+    ],
+    "top_score": 0.658,
+    "answer": "ESP32 kartı kamera modülünü bağlama işlemi genellikle kodlu bir işlemdir ve bu durumda ESP32 kartını çalıştırmanız gerekmektedir. Ancak, ESP32 kartı kamera modüllerini doğrudan bağlamak için kodlanmış bir yazılım gerektirmez. Bu durumda, kamera modülünü esp32.h dosyasında tanımlanan bir fonksiyona bağlanabilirsiniz. \n\nBu fonksiyon, kamera'nın bağlantı noktasını belirtir ve kamera'nın veritabanı adresini ve bağlantı noktası numarasını alır. İşte genel bir örneği:\n\n```cpp\n#include <esp_camera.h>\n\nvoid setup() {\n    // Camera init\n    camera_config_t config;\n    config.ledc_channel = LEDC_CHANNEL_0; \n    config.ledc_timer = LEDC_TIMER_0; \n    config.pin_dq = DQ_PIN; \n    config.pin_clk = CLK_PIN; \n    config.pin_mosi = MOSI_PIN; \n    config.pin_slck = SLCK_PIN; \n    config.pin_reset = RESET_PIN;",
+    "elapsed_sec": 8.13,
+    "said_unknown": false,
+    "auto_flag_ok": false
+  },
+  {
+    "query": "asdkjfh qwerty 12345",
+    "expected_answerable": false,
+    "sources": [
+      "ESP-NOW Eşleştirme",
+      "ESP-NOW Protokolü SSS"
+    ],
+    "top_score": 0.399,
+    "answer": "Bu konuda bilgi tabanımda yeterli bilgi bulamadım, bu yüzden bir cevap veremiyorum.",
+    "elapsed_sec": 0.48,
+    "said_unknown": true,
+    "auto_flag_ok": true
+  }
+]

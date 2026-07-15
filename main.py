@@ -9,6 +9,10 @@ colorama_init(autoreset=True)
 
 DB_PATH = "rag.db"
 TOP_K = 2
+SIMILARITY_THRESHOLD = 0.45  # bu skorun altında context'e hiç güvenilmiyor, LLM çağrılmıyor
+FALLBACK_ANSWER = (
+    "Bu konuda bilgi tabanımda yeterli bilgi bulamadım, bu yüzden bir cevap veremiyorum."
+)
 
 SYSTEM_PROMPT = (
     "You are a helpful assistant that answers questions about an ESP32 development board "
@@ -115,6 +119,13 @@ def main():
         # Kullanılan kaynakları önce göster
         source_list = ", ".join(source for _, source, _ in top_chunks)
         print(f"{Fore.BLUE}  ↳ Kullanılan kaynaklar: {source_list}{Style.RESET_ALL}")
+
+        top_score = top_chunks[0][0] if top_chunks else 0.0
+        if top_score < SIMILARITY_THRESHOLD:
+            answer = FALLBACK_ANSWER
+            print(f"{Fore.MAGENTA}{Style.BRIGHT}Cevap:{Style.RESET_ALL} {answer}\n")
+            history.append((query, answer))
+            continue
 
         context_text = "\n\n".join(
             f"[{source}]\n{text}" for _, source, text in top_chunks
